@@ -1,0 +1,28 @@
+<?php
+
+
+
+$app = new Illuminate\Foundation\Application;
+
+$app->redirectIfTrailingSlash();
+
+
+
+$env = $app->detectEnvironment(array(
+
+	'local' => array('*localhost*'),
+
+));
+
+
+
+$app->bindInstallPaths(require __DIR__.'/paths.php');
+
+
+
+$framework = $app['path.base'].'/vendor/laravel/framework/src';
+
+require $framework.'/Illuminate/Foundation/start.php';
+
+
+return $app;
